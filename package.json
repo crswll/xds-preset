@@ -1,0 +1,19 @@
+{
+  "name": "xds-protoype",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Bill Criswell",
+  "license": "ISC",
+  "dependencies": {
+    "clb": "^0.0.5",
+    "tailwindcss-theme-swapper": "^0.3.0"
+  },
+  "devDependencies": {
+    "tailwindcss": "^2.0.3"
+  }
+}

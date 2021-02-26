@@ -15,7 +15,7 @@ module.exports = {
       transparent: 'transparent',
     },
 
-    // Escape hatch right now...
+    // Escape hatch right now!
     fontFamily: {
       brand: 'XfinityBrown',
       default: 'XfinityStandard',

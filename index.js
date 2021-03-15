@@ -1,98 +1,82 @@
 const swapper = require('tailwindcss-theme-swapper')
-const inflatePlugin = require('./plugins/inflate')
-const typographyPlugin = require('./plugins/typography')
-const colors = require('./colors')
-const { light, dark } = colors
+const tokens = require('./tokens')
+const pxToRem = (px, rootFontSize = 16) => `${px / rootFontSize}rem`
 
 module.exports = {
   theme: {
-    // Keeping these app specific...
     screens: {},
 
-    // These don't need to be themed.
     colors: {
       current: 'currentColor',
       transparent: 'transparent',
     },
 
-    // Escape hatch right now!
     fontFamily: {
       brand: 'XfinityBrown',
       default: 'XfinityStandard',
     },
 
+    borderRadius () {
+      const { none, xsmall, small, medium, large, xlarge } = tokens.cornerRadius
+
+      return {
+        none: pxToRem(none),
+        xs: pxToRem(xsmall),
+        sm: pxToRem(small),
+        DEFAULT: pxToRem(medium),
+        lg: pxToRem(large),
+        xl: pxToRem(xlarge),
+        full: '9999px',
+      }
+    },
+
     extend: {
-      // Overloading the default borderColor
       borderColor: theme => ({
         DEFAULT: theme('colors.neutral.10', 'currentColor'),
       }),
+
       boxShadow: {
         omni: '0 18px 30px -25px rgba(0, 0, 0, 0.75)',
+      },
+
+      outline: theme => ({
+        base: [ `2px solid currentColor`, theme('spacing.2') ],
+      }),
+
+      opacity: {
+        '15': '0.15',
       },
     },
   },
 
   corePlugins: {
-    // Produces a lot of classes we never use or hopefully don't need to.
     placeholderColor: false,
+    placeholderOpacity: false,
   },
 
   variants: {
     extend: {
-      // This is needed for down states...
       backgroundColor: ['active'],
+      outline: ['focus'],
     },
   },
 
   plugins: [
-    // This plugin essentially pads all direct childs...
-    inflatePlugin,
-
-    // This gets all the typography tokens...
-    typographyPlugin,
-
-    // This allows for dark and light mode...
+    require('./plugins/inflate'),
+    require('./plugins/typography'),
     swapper({
       themes: [
         {
           name: 'base',
           selectors: [':root'],
-          theme: {
-            colors: {
-              neutral: {
-                0: '#ffffff',
-                100: '#000000',
-                ...light.grey,
-              },
-              theme: light.blue,
-              error: light.red,
-              positive: light.green,
-              info: light.purple,
-              warning: light.orange,
-              purple: light.purple,
-            },
-          },
+          theme: require('./themes/base')
         },
-        // This is just the light theme flipped for now.
         {
           name: 'dark',
+          // mediaQuery: '@media (prefers-color-scheme: dark)',
           selectors: ['.dark'],
-          theme: {
-            colors: {
-              neutral: {
-                0: '#000000',
-                100: '#FFFFFF',
-                ...dark.grey,
-              },
-              theme: dark.blue,
-              error: dark.red,
-              positive: dark.green,
-              info: dark.purple,
-              warning: dark.yellow,
-              purple: dark.purple,
-            },
-          },
-        }
+          theme: require('./themes/dark')
+        },
       ],
     })
   ],

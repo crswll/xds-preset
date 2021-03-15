@@ -1,20 +1,19 @@
-import clb from 'clb'
+  import clb from 'clb'
 
-export default clb({
-  base: 'font-sans ',
+export default clb ({
   defaults: {
     priority: 'primary',
     tone: 'neutral',
-    variant: 'body3',
+    variant: 'body1',
   },
   variants: {
     tone: {
-      neutral: 'text-neutral-80',
-      error: 'text-error-60',
-      info: 'text-info-60',
-      theme: 'text-theme-60',
-      positive: 'text-positive-60',
-      warning: 'text-warning-60',
+      neutral: 'text-neutral-90',
+      error: 'text-error-50',
+      info: 'text-info-50',
+      theme: 'text-theme-50',
+      positive: 'text-positive-50',
+      warning: 'text-warning-50',
     },
     priority: {
       primary: 'text-opacity-95',
@@ -22,20 +21,14 @@ export default clb({
       tertiary: 'text-opacity-60',
     },
     variant: {
-      display1: 'text-display1',
-      display2: 'text-display2',
-      headline1: 'text-headline1',
-      headline2: 'text-headline2',
-      headline3: 'text-headline3',
-      body1: 'text-body1',
-      body2: 'text-body2',
-      body3: 'text-body3',
-      body4: 'text-body4',
-      button1: 'text-button1',
-      button2: 'text-button2',
-      callout1: 'text-callout1',
-      callout2: 'text-callout2',
-      callout3: 'text-callout3',
+      display1: 'text-4xl font-bold font-brand',
+      display2: 'text-3xl font-bold font-brand',
+      headline1: 'text-2xl font-bold font-brand',
+      headline2: 'text-xl font-bold font-brand',
+      headline3: 'text-lg font-bold font-brand',
+      body1: 'text-base font-normal font-default',
+      body2: 'text-sm font-normal font-default',
+      body3: 'text-xs font-normal font-default',
     },
   },
 })

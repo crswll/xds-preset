@@ -10,7 +10,7 @@ const inflatePlugin = plugin(function ({ addComponents, theme, variants }) {
         [`.inflate-x-${name} > *`]: { paddingLeft: padding, paddingRight: padding },
         [`.inflate-y-${name} > *`]: { paddingTop: padding, paddingBottom: padding },
       },
-      variants('inflate', [])
+      variants('inflate', ['responsive'])
     )
   })
 })

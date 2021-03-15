@@ -1,5 +1,6 @@
 // TODO: Get these @font-face and typography classes from the tokens repo.
 const plugin = require('tailwindcss/plugin')
+const tokens = require('../tokens')
 
 const typographyPlugin = plugin(function({ addComponents, addBase }) {
   addBase({

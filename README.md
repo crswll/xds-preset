@@ -2,7 +2,9 @@
 
 ## Install
 
-Need to work on this? A local clone will work.
+```
+npm install git://github.comcast.com/Internet/tailwindcss-xds-prototyping.git
+```
 
 ## Use It
 ```js

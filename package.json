@@ -1,6 +1,5 @@
 {
-  "name": "@crswll/tailwindcss-xds-preset",
-  "private": false,
+  "name": "tailwindcss-xds-preset",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
